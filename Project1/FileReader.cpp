@@ -5,7 +5,6 @@
 #include <vector>
 #include <algorithm>
 
-
 using namespace std;
 
 void FileReader(string name_of_the_file, string anag_me){
@@ -15,39 +14,20 @@ void FileReader(string name_of_the_file, string anag_me){
 	map<char, int> lettercount;
 	vector<string> matching_words;
 
-
 	vector < map<char, int> > all_words;
 	vector<char> letters{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
 		'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
 		'x', 'y', 'z'};
 
-
-
-	for (char c : letters) {
-		int temp = count(anag_me.begin(), anag_me.end(), c);
-		lettercount_word[c] = temp;
-	}
+	lettercount_word = lettercount_for_the_word(letters, anag_me);
 
 	while (!the_file.eof()){
-		
 		the_file >> line;
+
+		search_phase(line);
+
+		lettercount = lettercount_for_the_word(letters, line);
 		
-		if (line == "crawls") {
-			cout << "25% of search done\n";
-		}
-
-		else if (line == "labyrinth") {
-			cout << "50% of search done\n";
-		}
-
-		else if (line == "seceding") {
-			cout << "75% of search done\n";
-		}
-
-		for (char c : letters) {
-			int temp = count(line.begin(), line.end(), c);
-			lettercount[c] = temp;
-		}
 		map<char, int>::iterator iter_randomword = lettercount.begin();
 		map<char, int>::iterator iter_theword = lettercount_word.begin();
 		bool same{ true };
@@ -64,6 +44,34 @@ void FileReader(string name_of_the_file, string anag_me){
 		}
 		
 	}
+	search_done(matching_words);
+}
+
+void search_phase(string line) {
+	if (line == "crawls") {
+		cout << "25% of search done\n";
+	}
+
+	else if (line == "labyrinth") {
+		cout << "50% of search done\n";
+	}
+
+	else if (line == "seceding") {
+		cout << "75% of search done\n";
+	}
+}
+
+map<char, int> lettercount_for_the_word(vector<char> letters, string line) {
+	map<char, int> lettercount;
+	for (char c : letters) {
+		int temp = count(line.begin(), line.end(), c);
+		lettercount[c] = temp;
+	}
+	return lettercount;
+}
+
+void search_done(vector<string> matching_words) {
+	string line;
 	cout << "Search done!\nMatching words are:\n ";
 	for (auto word : matching_words) {
 		cout << word << "\n ";
