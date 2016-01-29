@@ -72,11 +72,12 @@ map<char, int> lettercount_for_the_word(vector<char> letters, string line) {
 
 void search_done(vector<string> matching_words) {
 	string line;
-	cout << "Search done!\nMatching words are:\n ";
+	cout << "\nSearch done!\nMatching words are:\n\n";
 	for (auto word : matching_words) {
-		cout << word << "\n ";
+		cout << "1. " <<word << "\n";
 	}
-	cout << "Press enter to exit." << endl;
+
+	cout << "\nPress enter to exit." << endl;
 
 	getline(cin, line);
 }

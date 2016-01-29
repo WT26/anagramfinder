@@ -1,7 +1,3 @@
 ﻿  FileReader.cpp
-e:\tools\visual studio\vc\include\iostream(12): error C2143: syntax error: missing ';' before 'namespace'
-  Generating Code...
-  Compiling...
-  main.cpp
-e:\tools\visual studio\vc\include\iostream(12): error C2143: syntax error: missing ';' before 'namespace'
-  Generating Code...
+  Project1.vcxproj -> E:\projektit\github\AnagramFinder\anagramfinder\Debug\AnagramFileMaker.exe
+  Project1.vcxproj -> E:\projektit\github\AnagramFinder\anagramfinder\Debug\AnagramFileMaker.pdb (Partial PDB)
